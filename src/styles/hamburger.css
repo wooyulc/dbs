@@ -1,0 +1,144 @@
+/* hamburger.css */
+.main-header a{
+  letter-spacing: .18rem;
+  text-transform: uppercase;
+}
+
+.masthead{
+  /* Both of these are needed to keep the #menu-toggle visible when nav list is active / open. */
+  padding-right: 30px;
+  position: relative;
+  z-index: 1000;
+  /********************************/
+  left: 0;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.masthead h1{
+  transition-delay: 450ms;
+}
+
+.menu-toggle{
+  cursor: pointer;
+  width: 55px;
+
+
+}
+
+.menu-toggle div{
+  background-color: #ccc;
+  border-radius: 25px;
+  box-shadow: 0px 3px 13px rgba(0,0,0,.3);
+  height: 7px;
+  z-index: 9000;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(.13,.24,.35,1.64);
+}
+
+.menu-toggle .one,
+.menu-toggle .two{
+  margin-bottom: 7px;
+}
+
+/* hamburger.css */
+/************* Style and animate the nav overlay ***********************/
+.main-nav-list::before,
+.main-nav-list::after{
+    background-color: black;
+    content:"";
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 0vw;
+    transition: all 100ms ease-in-out 200ms;
+    z-index: 500;
+}
+
+.main-nav-list::before{
+    left: 0;
+}
+.main-nav-list::after{
+    right: 0;
+}
+
+.main-nav-list ul{
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition-duration: 20ms;
+    transition-timing-function: ease-in-out;
+    z-index: 3000;
+}
+
+.main-nav-list a{
+    color: white;
+    display: block;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    opacity: 0;
+    text-align: center;
+    text-transform: uppercase;
+    transition-delay: 100ms;
+    font-family: SokchoBadaDotum;
+}
+
+/************* Style the nav elements when active. ***********************/
+.masthead.active h1{
+    text-shadow: 0px 3px 3px rgba(0,0,0,.4);
+}
+
+.menu-toggle.active .one{
+    box-shadow: 0px 3px 13px rgba(0,0,0,.4);
+    transform: translate(0, 14px) rotate(45deg);
+}
+
+.menu-toggle.active .two{
+    background-color: transparent;
+    box-shadow: none;
+    transform: translateX(-55px);
+}
+
+.menu-toggle.active .three{
+    box-shadow: 0px 3px 13px rgba(0,0,0,.4);
+    transform: translate(0,-14px) rotate(-45deg);
+}
+
+.main-nav-list.active::before,
+.main-nav-list.active::after{
+    width: 100vw;
+/*     transition-duration: 1000ms; */
+}
+.main-nav-list.active ul{
+    top: 50%;
+    transform: translate(-50%,-50%);
+    transition-delay: 560ms;
+    transition-duration: 240ms;
+    transition-timing-function: cubic-bezier(.1, .2, .3, 1.4);
+}
+
+.main-nav-list.active a{
+    transition-delay: 600ms;
+    opacity: 1;
+}
+
+.menu-open {
+  z-index: -1;
+}
+
+.main-nav-list a:hover {
+  transition: 10ms 1ms;
+
+}
+
+@font-face {
+  font-family: 'SokchoBadaDotum';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/SokchoBadaDotum.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
